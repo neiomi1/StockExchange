@@ -1,0 +1,15 @@
+﻿@StockExchange_HostAddress = https://localhost:44310
+
+POST {{StockExchange_HostAddress}}/traders
+Content-Type: application/json
+
+{
+  "name":"Darah",
+  "cash":10000000
+}
+
+###
+
+GET {{StockExchange_HostAddress}}/traders
+
+###

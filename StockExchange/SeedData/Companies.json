@@ -1,0 +1,86 @@
+[
+  {
+    "CompanyName": "BluePeak Analytics",
+    "Volatility": 0.42,
+    "GrowthFactor": 1.3,
+    "ProfitFactor": 1.22,
+    "Tags": [
+      "Data Analytics",
+      "Information Technology Services",
+      "Artificial Intelligence / Machine Learning"
+    ]
+  },
+  {
+    "CompanyName": "UrbanHarvest Foods",
+    "Volatility": 0.35,
+    "GrowthFactor": 1.15,
+    "ProfitFactor": 1.05,
+    "Tags": [
+      "Farming & Agribusiness",
+      "Food & Beverage",
+      "Climate Tech"
+    ]
+  },
+  {
+    "CompanyName": "NovaBank Financial",
+    "Volatility": 0.28,
+    "GrowthFactor": 1.1,
+    "ProfitFactor": 1.3,
+    "Tags": [
+      "Consulting",
+      "Banking",
+      "Investment Services"
+    ]
+  },
+  {
+    "CompanyName": "Vertex Mobility",
+    "Volatility": 0.6,
+    "GrowthFactor": 1.4,
+    "ProfitFactor": 1.18,
+    "Tags": [
+      "Transportation & Logistics",
+    ]
+  },
+  {
+    "CompanyName": "BrightPath Learning",
+    "Volatility": 0.31,
+    "GrowthFactor": 1.25,
+    "ProfitFactor": 1.1,
+    "Tags": [
+      "Higher Education",
+      "Online Learning / EdTech",
+    ]
+  },
+  {
+    "CompanyName": "EcoCore Energy Solutions",
+    "Volatility": 0.38,
+    "GrowthFactor": 1.35,
+    "ProfitFactor": 1.28,
+    "Tags": [
+      "Renewable Energy",
+      "Climate Tech",
+      "Utilities"
+    ]
+  },
+  {
+    "CompanyName": "OmniPharm Healthcare",
+    "Volatility": 0.5,
+    "GrowthFactor": 1.12,
+    "ProfitFactor": 1.42,
+    "Tags": [
+      "Pharmaceuticals",
+      "Biotechnology"
+    ]
+  },
+  {
+    "CompanyName": "ClearSpan Construction Group",
+    "Volatility": 0.29,
+    "GrowthFactor": 1.05,
+    "ProfitFactor": 1.15,
+    "Tags": [
+      "Architecture & Urban Planning",
+      "Residential Real Estate",
+      "Engineering"
+    ]
+  }
+]

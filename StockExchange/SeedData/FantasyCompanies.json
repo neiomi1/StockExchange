@@ -1,0 +1,110 @@
+[
+  {
+    "CompanyName": "ArcaneTech Innovations",
+    "Volatility": 0.72,
+    "GrowthFactor": 1.45,
+    "ProfitFactor": 1.12,
+    "Tags": [
+      "Magic Engineering",
+      "Technology",
+      "Start-up"
+    ]
+  },
+  {
+    "CompanyName": "Griffon Logistics Ltd.",
+    "Volatility": 0.33,
+    "GrowthFactor": 1.08,
+    "ProfitFactor": 1.25,
+    "Tags": [
+      "Transportation",
+      "Fantasy Logistics",
+      "Beast Handling"
+    ]
+  },
+  {
+    "CompanyName": "SolarNova Energy",
+    "Volatility": 0.28,
+    "GrowthFactor": 1.21,
+    "ProfitFactor": 1.1,
+    "Tags": [
+      "Renewable Energy",
+      "Climate Tech"
+    ]
+  },
+  {
+    "CompanyName": "NetherBrew Alchemicals",
+    "Volatility": 0.88,
+    "GrowthFactor": 1.6,
+    "ProfitFactor": 0.95,
+    "Tags": [
+      "Potion Brewing",
+      "Fantasy",
+      "Consumer Goods"
+    ]
+  },
+  {
+    "CompanyName": "QuantumHaul Inc.",
+    "Volatility": 0.51,
+    "GrowthFactor": 1.35,
+    "ProfitFactor": 1.4,
+    "Tags": [
+      "Quantum Shipping",
+      "Sci-Fi",
+      "Logistics"
+    ]
+  },
+  {
+    "CompanyName": "Skyward Spires Consortium",
+    "Volatility": 0.65,
+    "GrowthFactor": 1.1,
+    "ProfitFactor": 1.05,
+    "Tags": [
+      "Floating City Engineering",
+      "Infrastructure",
+      "Fantasy"
+    ]
+  },
+  {
+    "CompanyName": "VitaGenix Biolabs",
+    "Volatility": 0.43,
+    "GrowthFactor": 1.3,
+    "ProfitFactor": 1.5,
+    "Tags": [
+      "Biotechnology",
+      "Healthcare"
+    ]
+  },
+  {
+    "CompanyName": "ChronoTrans Global",
+    "Volatility": 0.95,
+    "GrowthFactor": 1.7,
+    "ProfitFactor": 1.2,
+    "Tags": [
+      "Time Travel Logistics",
+      "Transportation",
+      "Sci-Fi"
+    ]
+  },
+  {
+    "CompanyName": "RuneForge Systems",
+    "Volatility": 0.58,
+    "GrowthFactor": 1.18,
+    "ProfitFactor": 1.07,
+    "Tags": [
+      "Rune Forging",
+      "Magic Engineering",
+      "Manufacturing"
+    ]
+  },
+  {
+    "CompanyName": "AetherNet Communications",
+    "Volatility": 0.39,
+    "GrowthFactor": 1.12,
+    "ProfitFactor": 1.22,
+    "Tags": [
+      "Telecommunications",
+      "Fantasy",
+      "Arcane Infrastructure"
+    ]
+  }
+]
