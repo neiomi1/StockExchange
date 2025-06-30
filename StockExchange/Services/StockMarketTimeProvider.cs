@@ -5,8 +5,8 @@ namespace StockExchange.Services
 {
     public class StockMarketTimeProvider : TimeProvider
     {
-        
-        public StockExchangeTimeOptions ProviderOptions { get; set => field = updateOptions(value); } 
+
+        public StockExchangeTimeOptions ProviderOptions { get; set => field = updateOptions(value); }
 
         private DateTimeOffset _lastTickActualTime = DateTime.UtcNow;
         public DateTimeOffset LastTickAppTime { get; set; }
@@ -17,7 +17,7 @@ namespace StockExchange.Services
         {
             ProviderOptions = options.Value;
         }
-        
+
         private StockExchangeTimeOptions updateOptions(StockExchangeTimeOptions options)
         {
             LastTickAppTime = LastTickAppTime == DateTimeOffset.MinValue ? options?.StartTime ?? DateTimeOffset.MinValue : LastTickAppTime;

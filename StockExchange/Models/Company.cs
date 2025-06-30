@@ -1,8 +1,8 @@
 ﻿namespace StockExchange.Models
 {
-    public class Company : BaseEntity
+    public class Company : IBaseEntity
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string? CompanyName { get; set; }
 
@@ -13,5 +13,8 @@
         public decimal ProfitFactor { get; set; }
 
         public required List<CompanyTag> Tags { get; set; }
+
+        public DateTimeOffset CreatedDate { get; set; }
+        public DateTimeOffset UpdatedDate { get; set; }
     }
 }

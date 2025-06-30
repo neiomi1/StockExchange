@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace StockExchange.Models
+﻿namespace StockExchange.Models
 {
     public class Setting
     {

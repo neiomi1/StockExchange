@@ -1,6 +1,6 @@
 ﻿namespace StockExchange.Models
 {
-    public class BaseEntity
+    public interface IBaseEntity
     {
         public DateTimeOffset CreatedDate { get; set; }
         public DateTimeOffset UpdatedDate { get; set; }

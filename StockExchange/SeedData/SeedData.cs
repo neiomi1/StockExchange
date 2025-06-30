@@ -1,5 +1,4 @@
-﻿using Microsoft.OpenApi.Extensions;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using StockExchange;
 using StockExchange.Models;
 
@@ -11,7 +10,7 @@ public static class SeedData
 
         var json = File.ReadAllText(filePath);
         var tags = JsonConvert.DeserializeObject<List<Tag>>(json);
-       
+
         if (tags != null)
         {
             context.Tags.AddRange(tags.Where(tag => !existingTags.Any(t => t.Name == tag.Name)));
@@ -30,19 +29,19 @@ public static class SeedData
         {
             companies = companies.Where(tag => !existingCompanies.Any(t => t.CompanyName == tag.CompanyName)).ToList();
             context.Companies.AddRange(companies);
-            context.SaveChanges(); 
+            context.SaveChanges();
             var tags = context.Tags.ToList();
             foreach (var company in companies)
             {
-                company.Tags = 
+                company.Tags =
                     jsonCompanies.Find(c => c.CompanyName == company.CompanyName)?
                     .Tags.
                     Where(tag => tags.Any(t => t.Name == tag))
-                    .Select(tag => new CompanyTag { Company = company, CompanyId =company.Id, Tag = tags.FirstOrDefault(t => t.Name == tag), TagId = tags.FirstOrDefault(t => t.Name == tag).Id  }).ToList();
+                    .Select(tag => new CompanyTag { Company = company, CompanyId = company.Id, Tag = tags.FirstOrDefault(t => t.Name == tag), TagId = tags.FirstOrDefault(t => t.Name == tag).Id }).ToList();
             }
             context.SaveChanges();
         }
-        
+
     }
 
     private class SeedCompany
@@ -61,8 +60,8 @@ public static class SeedData
 
         public Company ToCompany()
         {
-           
-            return new Company { CompanyName = CompanyName, Volatility = Volatility, GrowthFactor = GrowthFactor, ProfitFactor = ProfitFactor, Tags = new List<CompanyTag>()};
+
+            return new Company { CompanyName = CompanyName, Volatility = Volatility, GrowthFactor = GrowthFactor, ProfitFactor = ProfitFactor, Tags = new List<CompanyTag>() };
         }
     }
 }

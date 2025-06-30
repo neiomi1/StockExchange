@@ -7,7 +7,8 @@
 
 
         public TradeDto() { }
-        public TradeDto(Trade trade) {
+        public TradeDto(Trade trade)
+        {
             Amount = trade.StockShares.Count;
             TradePrice = trade.TradePrice;
         }

@@ -69,9 +69,9 @@ exchange.MapGet("/", GetOffers).RequireAuthorization();
 exchange.MapGet("/all", GetAllOffers).RequireAuthorization();
 exchange.MapPost("/buy", BuyOffer).RequireAuthorization();
 
-static async Task<IResult> Offer(ClaimsPrincipal user, IOfferService offerService, Guid companyGuid, int amount, decimal price, decimal? pricePerShare = null)
+static async Task<IResult> Offer(ClaimsPrincipal user, IOfferService offerService, int companyId, int amount, decimal price, decimal? pricePerShare = null)
 {
-    return await offerService.CreateOffer(user, companyGuid, amount, price, pricePerShare);
+    return await offerService.CreateOffer(user, companyId, amount, price, pricePerShare);
 }
 
 static async Task<IResult> GetOffers(ClaimsPrincipal user, StockExchangeDb db, UserManager<Trader> userManager)
@@ -88,9 +88,9 @@ static async Task<IResult> GetAllOffers(ClaimsPrincipal user, StockExchangeDb db
     return TypedResults.Ok(await db.Offers.ToArrayAsync());
 }
 
-static async Task<IResult> BuyOffer(ClaimsPrincipal user, IOfferService offerService, Guid offerId, int? amount = null)
+static async Task<IResult> BuyOffer(ClaimsPrincipal user, IOfferService offerService, int copmanyId, int? amount = null)
 {
-   return await offerService.BuyOffer(user, offerId, amount);
+    return await offerService.BuyOffer(user, copmanyId, amount);
 }
 
 #endregion Exchange
@@ -234,9 +234,9 @@ static async Task<IResult> GetShare(Guid id, StockExchangeDb db)
 //}
 
 
-static async Task<IResult> BuyShares(ClaimsPrincipal user, IOfferService offerService, Guid companyGuid, int amount, decimal? maxPricePerShare = null)
+static async Task<IResult> BuyShares(ClaimsPrincipal user, IOfferService offerService, int companyId, int amount, decimal? maxPricePerShare = null)
 {
-    return await offerService.BuyShares(user, companyGuid, amount, maxPricePerShare);
+    return await offerService.BuyShares(user, companyId, amount, maxPricePerShare);
 }
 
 

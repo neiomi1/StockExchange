@@ -1,6 +1,6 @@
 ﻿namespace StockExchange.Models
 {
-    public class CompanyReport : BaseEntity
+    public class CompanyReport : IBaseEntity
     {
         public int Id { get; set; }
 
@@ -10,5 +10,7 @@
 
         public decimal Profit { get; set; }
 
+        public DateTimeOffset CreatedDate { get; set; }
+        public DateTimeOffset UpdatedDate { get; set; }
     }
 }

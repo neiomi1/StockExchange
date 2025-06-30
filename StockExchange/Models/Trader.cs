@@ -6,7 +6,7 @@ namespace StockExchange.Models
     {
         public decimal Cash { get; set; }
 
-        public Trader(){}
+        public Trader() { }
     }
 
 }

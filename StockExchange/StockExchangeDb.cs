@@ -9,7 +9,8 @@ namespace StockExchange
     {
         private readonly StockMarketTimeProvider _timeProvider;
         public StockExchangeDb(DbContextOptions<StockExchangeDb> options, StockMarketTimeProvider timeProvider)
-        : base(options) {
+        : base(options)
+        {
             _timeProvider = timeProvider;
         }
 
@@ -23,22 +24,29 @@ namespace StockExchange
         public DbSet<Tag> Tags => Set<Tag>();
         public DbSet<NewsTag> WeightedTags => Set<NewsTag>();
         public DbSet<Setting> Settings => Set<Setting>();
+        
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.useid
+        //}
+
+
 
         public override int SaveChanges()
         {
             var entries = ChangeTracker
                 .Entries()
-                .Where(e => e.Entity is BaseEntity && (
+                .Where(e => e.Entity is IBaseEntity && (
                 e.State == EntityState.Added
                 || e.State == EntityState.Modified));
 
             foreach (var entityEntry in entries)
             {
-                ((BaseEntity)entityEntry.Entity).UpdatedDate = _timeProvider.GetUtcNow();
+                ((IBaseEntity)entityEntry.Entity).UpdatedDate = _timeProvider.GetUtcNow();
 
                 if (entityEntry.State == EntityState.Added)
                 {
-                    ((BaseEntity)entityEntry.Entity).CreatedDate = _timeProvider.GetUtcNow();
+                    ((IBaseEntity)entityEntry.Entity).CreatedDate = _timeProvider.GetUtcNow();
                 }
             }
 
@@ -50,7 +58,7 @@ namespace StockExchange
         {
             var entries = ChangeTracker
               .Entries()
-              .Where(e => e.Entity is BaseEntity && (
+              .Where(e => e.Entity is IBaseEntity && (
               e.State == EntityState.Added
               || e.State == EntityState.Modified));
 
@@ -58,11 +66,11 @@ namespace StockExchange
 
             foreach (var entityEntry in entries)
             {
-                ((BaseEntity)entityEntry.Entity).UpdatedDate = date;
+                ((IBaseEntity)entityEntry.Entity).UpdatedDate = date;
 
                 if (entityEntry.State == EntityState.Added)
                 {
-                    ((BaseEntity)entityEntry.Entity).CreatedDate = date;
+                    ((IBaseEntity)entityEntry.Entity).CreatedDate = date;
                 }
             }
 

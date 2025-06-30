@@ -188,10 +188,12 @@ namespace StockExchange.Migrations
 
             modelBuilder.Entity("StockExchange.Models.Company", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CompanyName")
                         .HasColumnType("text")
@@ -232,8 +234,8 @@ namespace StockExchange.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<Guid>("CompanyId")
-                        .HasColumnType("uuid")
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("integer")
                         .HasColumnName("company_id");
 
                     b.Property<DateTimeOffset>("CreatedDate")
@@ -263,8 +265,8 @@ namespace StockExchange.Migrations
 
             modelBuilder.Entity("StockExchange.Models.CompanyTag", b =>
                 {
-                    b.Property<Guid>("CompanyId")
-                        .HasColumnType("uuid")
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("integer")
                         .HasColumnName("company_id");
 
                     b.Property<int>("TagId")
@@ -336,13 +338,15 @@ namespace StockExchange.Migrations
 
             modelBuilder.Entity("StockExchange.Models.Offer", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    b.Property<Guid>("CompanyId")
-                        .HasColumnType("uuid")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("integer")
                         .HasColumnName("company_id");
 
                     b.Property<DateTimeOffset>("CreatedDate")
@@ -396,13 +400,15 @@ namespace StockExchange.Migrations
 
             modelBuilder.Entity("StockExchange.Models.StockShare", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    b.Property<Guid>("CompanyId")
-                        .HasColumnType("uuid")
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("integer")
                         .HasColumnName("company_id");
 
                     b.Property<decimal>("CompanyShare")
@@ -413,8 +419,8 @@ namespace StockExchange.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_date");
 
-                    b.Property<Guid?>("OfferId")
-                        .HasColumnType("uuid")
+                    b.Property<int?>("OfferId")
+                        .HasColumnType("integer")
                         .HasColumnName("offer_id");
 
                     b.Property<int?>("TradeId")

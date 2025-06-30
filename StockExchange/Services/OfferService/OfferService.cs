@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using StockExchange.Models;
 using StockExchange.Models.ResponseModels;
@@ -19,13 +18,13 @@ namespace StockExchange.Services.OfferService
             _userService = userService;
         }
 
-        public async Task<IResult> CreateOffer(ClaimsPrincipal user, Guid companyGuid, int amount, decimal price, decimal? pricePerShare = null)
+        public async Task<IResult> CreateOffer(ClaimsPrincipal user, int companyId, int amount, decimal price, decimal? pricePerShare = null)
         {
             var trader = await _userService.GetTraderAsync(user);
 
             if (trader == null) { return TypedResults.NotFound(); }
 
-            var ownedShares = _stockExchangeDbContext.StockShares.Where(share => share.Trader.Id == trader.Id && share.Company.Id == companyGuid).Take(amount).ToArray();
+            var ownedShares = _stockExchangeDbContext.StockShares.Where(share => share.Trader.Id == trader.Id && share.Company.Id == companyId).Take(amount).ToArray();
 
             if (ownedShares == null || !ownedShares.Any()) { return TypedResults.BadRequest(); }
 
@@ -41,7 +40,7 @@ namespace StockExchange.Services.OfferService
             return TypedResults.Created(offer.Id.ToString());
         }
 
-        public async Task<IResult> BuyShares(ClaimsPrincipal claimsPrincipal, Guid companyGuid, int amount, decimal? maxPricePerShare = null)
+        public async Task<IResult> BuyShares(ClaimsPrincipal claimsPrincipal, int companyId, int amount, decimal? maxPricePerShare = null)
         {
             var trader = await _userService.GetTraderAsync(claimsPrincipal);
             if (trader == null) { return TypedResults.NotFound(); }
@@ -49,7 +48,7 @@ namespace StockExchange.Services.OfferService
             var buyResult = new TradeDto();
             while (amount > 0)
             {
-                var currentResponse = await BuyCheapestOffer(trader, companyGuid, amount, maxPricePerShare);
+                var currentResponse = await BuyCheapestOffer(trader, companyId, amount, maxPricePerShare);
                 if (currentResponse is NotFound)
                 {
                     return TypedResults.Ok(buyResult);
@@ -62,12 +61,12 @@ namespace StockExchange.Services.OfferService
             return TypedResults.Ok(buyResult);
         }
 
-        public async Task<IResult> BuyCheapestOffer(Trader trader, Guid companyGuid, int amount, decimal? maxPricePerShare)
+        public async Task<IResult> BuyCheapestOffer(Trader trader, int companyId, int amount, decimal? maxPricePerShare)
         {
             var offer = await _stockExchangeDbContext.Offers.
                    Include(o => o.Company)
                    .Include(o => o.StockShares)
-                   .Where(offer => offer.Company.Id == companyGuid && maxPricePerShare <= offer.PricePerShare)
+                   .Where(offer => offer.Company.Id == companyId && maxPricePerShare <= offer.PricePerShare)
                    .OrderByDescending(o => o.PricePerShare)
                    .FirstAsync();
 
@@ -77,20 +76,20 @@ namespace StockExchange.Services.OfferService
 
             if (result is NotFound)
             {
-                return await BuyCheapestOffer(trader, companyGuid, amount, maxPricePerShare);
+                return await BuyCheapestOffer(trader, companyId, amount, maxPricePerShare);
             }
             return result;
         }
 
 
-        public async Task<IResult> BuyOffer(ClaimsPrincipal claimsPrincipal, Guid offerId, int? amount = null)
+        public async Task<IResult> BuyOffer(ClaimsPrincipal claimsPrincipal, int offerId, int? amount = null)
         {
             var trader = await _userService.GetTraderAsync(claimsPrincipal);
             return await BuyOffer(trader, offerId, amount);
         }
 
 
-        private async Task<IResult> BuyOffer(Trader? trader, Guid offerId, int? amount = null)
+        private async Task<IResult> BuyOffer(Trader? trader, int offerId, int? amount = null)
         {
             if (trader == null) { return TypedResults.NotFound(); }
 

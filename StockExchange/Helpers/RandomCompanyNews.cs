@@ -57,8 +57,8 @@ namespace StockExchange.Helpers
         {
             var random = new Random();
             var severity = Math.Round(random.NextDouble() * random.Next(10), 2);
-            var selectedTags = tags.ToList().SelectionSample(random.Next(1, 5)).Distinct().Select(t => new NewsTag { Tag = t, Weight = (random.NextDouble() - 0.5) * severity}).ToList();
-            
+            var selectedTags = tags.ToList().SelectionSample(random.Next(1, 5)).Distinct().Select(t => new NewsTag { Tag = t, Weight = (random.NextDouble() - 0.5) * severity }).ToList();
+
             return new News
             {
                 Title = GenerateTitle(random, selectedTags),

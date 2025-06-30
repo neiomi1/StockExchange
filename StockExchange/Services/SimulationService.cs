@@ -34,10 +34,10 @@ namespace StockExchange.Services
                     await UpdateAppTime(scope);
 
                     // new day
-                    if(previousTime.Day < currentTime.Day)
+                    if (previousTime.Day < currentTime.Day)
                     {
                         var rand = new Random();
-                        if(rand.NextDouble() > 0.1)
+                        if (rand.NextDouble() > 0.1)
                         {
                             using var db = scope.ServiceProvider.GetRequiredService<StockExchangeDb>();
                             await CreateNews(db);
@@ -82,7 +82,7 @@ namespace StockExchange.Services
             news.NewsTags = newsTags;
             foreach (var tag in news.NewsTags)
             {
-                tag.NewsId = news.Id;   
+                tag.NewsId = news.Id;
             }
             await db.SaveChangesAsync();
         }
